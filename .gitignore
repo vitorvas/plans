@@ -1,0 +1,12 @@
+.gitignore
+*.pdf
+*.sty
+*.bbl
+*.aux
+*~
+*.log
+*.blg
+*.hst
+*.toc
+*.ver
+*.gz

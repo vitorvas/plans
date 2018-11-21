@@ -1,0 +1,57 @@
+%Tudo que começa com '%' é comentário e é ignorado pelo compilador
+
+%Gerando arquivo em latex:
+%latex arquivo.tex (em dvi)
+%pdflatex arquivo (em pdf)
+%dvipdfm arquivo
+%s2pdf arquivo
+
+% Alguns modos de usar o latex:
+% Windows  Miktex com Led
+% Linux  texlive com kile
+
+\documentclass[12pt]{report} %aqui fala o tipo de documento e o tamanho da fonte. Opções: tamanho do texto (10pt, 12pt, 14pt), formato do papel (a4paper, a5paper, b5paper, letterpaper, legalpaper, executivepaper), o número de colunas (onecolumn, twocolumn), entre outras opções.
+%Por exemplo, [12pt,a4,twocolumn].
+%classe: article, report, letter, book ou slides. Instalar abnt para quem está pensando no tf
+\usepackage[brazilian]{babel} %hifenização em português do brasil
+\usepackage[T1]{fontenc} % caracteres com acentos são considerados um bloco só
+\usepackage[utf8]{inputenc} % Corrigie os acentos em Português
+\usepackage{ae} %arruma a fonte quando usa o pacote fontenc
+%\usepackage[pdftex]{graphicx}%Para inserir figuras
+\usepackage{vhistory}
+
+\begin{document}
+\title{Projetos e atividades}
+\author{Vitor Vasconcelos Araújo Silva\\ vitors@cdtn.br}
+\date{\today}
+
+\maketitle %cria o título
+
+%\def \negritovi {\textbf} %Criando comandos
+
+\tableofcontents %índice
+\pagebreak % Quebra de página
+%\listoffigures %indice de figuras
+%\listoftables %indice de tabelas
+\pagebreak % Quebra de página
+
+\begin{abstract}
+Este documento apresenta os projetos e atividades planejados e/ou execução 
+dentro da minha área de atuação no SETRE/CDTN. Para cada um deles são 
+brevemente apresentados objetivo, motivação, aplicações, possíveis \textit{outcomes} e nível de dificuldade de execução. O objetivo da 
+condensação das atividades e projetos em um documento é o de simplificar 
+a avaliação temporal da evolução dos planos e organizar o tempo investido 
+em cada um deles.
+\end{abstract}
+
+\chapter*{Controle de versões}
+
+\begin{versionhistory}
+	\vhEntry{0.0}{21/11/2018}{Vitor}{Documento criado}
+%	\vhEntry{1.1}{23.01.04}{DP|JPW}{correction}
+%    \vhEntry{1.2}{03.02.04}{DP|JPW}{revised after review}
+\end{versionhistory}
+
+\include{template} %Cria uma seção
+
+\end{document}
