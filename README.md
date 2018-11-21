@@ -1,5 +1,4 @@
-### Uma listagem organizada dos projetos atividades em que estou
-envolvido para facilitar o controle e organização das atividades.
+### Uma listagem organizada dos projetos atividades em que estou envolvido para facilitar o controle e organização das atividades.
 
 Cada capítulo é incluído no documento principal e descreve uma
 atividade/projeto. Os atuais capítulos são:
