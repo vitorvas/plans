@@ -1,0 +1,61 @@
+\chapter{Paralelização do \textit{milonga}}
+
+\textbf{Motivação:} $\star\star$\\
+
+\textbf{Tipo:} Projeto\\
+
+\textbf{Descrição:}
+
+Este projeto objetiva a paralelização do código milonga. O milonga é um solver 
+de elementos finitos e volumes finitos para a solução da equação de difusão de 
+neutrons. Funciona sobre o código wasora, que oferece funções de base sobre as 
+quais o milonga executa.
+
+A ligação intrínseca entre ambos os softwares, torna complexa a paralelização. 
+Uma primeira metodologia de paralelização consiste em separação de domínios. 
+Em outras palavras, a malha é dividida entre processadores e nas faces separadas 
+são definidas condições de contorno especiais nas quais a comunicação entre 
+processadores pode ser feita (utilizando, por exemplo, MPI).
+
+Uma formulação mais simples para a paralelização consiste na solução das matrizes 
+já construídas, seja por elementos finitos ou volumes finitos, em paralelo. Em 
+teoria isso é facilmente atingido uma vez que o milonga faz uso da biblioteca 
+PETSc para essa solução e esta biblioteca é construída utilizando-se do MPI. 
+Apesar de mais simples se comparada à proposta anterior, uma vez que são feitas 
+chamadas espalhadas entre o milonga e o wasora de funções da PETSc para a construção das matrizes, uma paralelização nesse nível é não-trivial.
+
+Em resumo, quaisquer opções são bastante trabalhosas em termos de investimento 
+de tempo em re-codificação.
+
+Cabe ressaltar que já foram feitos alguns estudos com profiling do milonga para 
+diferentes casos e algumas funções que percorrem a malha são os \textit{bottlenecks} conhecidos. Modificações na malha para tratar deste problema 
+são também complexas.\\
+
+\textbf{Sub-atividades:}
+
+\begin{itemize}
+	\item[1] Separação da construção das matrizes com execução do código comum 
+	apenas no processo mestre.
+\end{itemize}
+
+\textbf{Observações:}
+
+Problema muito interessante do ponto de vista didático, para a compreensão 
+de FEM e FVM, neutrônica e como são feitas as soluções. Entretanto, bastante 
+complexa qualquer modificação no código.
+
+O milonga e o wasora são ambos construídos unicamente usando C e são opensource.\\
+
+\textbf{\textit{Outcomes}}
+
+Código paralelizado (não sei se cabe registro), eventual paper sobre a parelização 
+executando casos complexos numa revista como Annals, ganho de know-how para eventual futuro pós-doc e reconhecimento de uma pequena comunidade utilizadora 
+do milonga.\\
+
+\textbf{Dificuldades/Restrições}
+
+Tempo e esforço envolvidos com risco alto de não ser viável a paralelização.
+
+\textbf{Revisões:}
+\date{22 de novembro de 2018}
+%\date{\today}
