@@ -1,0 +1,56 @@
+\chapter{PyPrana}
+
+\textbf{Motivação:} $\star\star\star$\\
+
+\textbf{Tipo:} Projeto.\\
+
+\textbf{Descrição:} O objetivo deste projeto é re-escrever um sub-conjunto do 
+software prana que compreenda inicialmente apenas os algorimos e funções 
+utilizados pelo André no seu cálculo de PIV. Não está no escopo do projeto 
+interface gráfica como o original do Prana.
+
+A justificativa para esse projeto é de ordem prática e didática. A licença do 
+MATLAB tem alto custo (e grande dependência de toolboxes) e uma implementação 
+aberta nos permitiria interromper essa dependência. Do ponto de vista didático, 
+essa implementação nos permitiria tentar fazer uso das aceleradoras gráficas 
+do cluster com o desenvolvimento de software específico para aumento de 
+desempenho na análise de dados.
+
+A validação dos resultados pode ser feita com o Prana original executado no 
+cluster.
+
+\textbf{Sub-atividades}
+
+\begin{itemize}
+	\item[1] Descrição do algoritmo utilizado para análise do PIV do André 
+	formalmente (texto) e visualmente, objetivando futura documentação do 
+	código produzido;
+	\item[2] Implementação em Python das funções de leitura de imagens.
+\end{itemize}
+
+\textbf{Observações:}
+
+A tentativa de utilização das aceleradoras gráficas pode não levar a resultados 
+melhores do que os de uma paralelização em CPUs.
+
+A utilização das GPUs só é possível após domínio do algoritmo sequencial e 
+eventual paralelização em CPUs.
+
+\textbf{\textit{Outcomes}}
+
+\begin{itemize}
+	\item[1] Paper na revista FOSS caso o software alcance maturidade para tal. Caso contrário, publicação no INAC 2019.
+	\item[2] Paper em revista com análise dos resultados do André na TAMU.
+
+\end{itemize}
+
+
+\textbf{Dificuldades/Restrições}
+
+Dificuldade inerente da compreensão e implementação de algoritmos dessa complexidade.\\
+
+\textbf{Revisões:}
+\date{21 de novembro de 2018}
+\date{30 de novembro de 2018}
+
+%\date{\today}

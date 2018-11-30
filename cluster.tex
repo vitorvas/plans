@@ -1,4 +1,4 @@
-\chapter{Instalação do cluster Tora III}
+\chapter{Instalação do Cluster}
 
 \textbf{Motivação:} $\star\star\star\star$\\
 
@@ -6,7 +6,7 @@
 
 \textbf{Descrição:} Este projeto trata da instalação do novo cluster do Laboratório 
 de Termohidráulica e Neutrônica do CDTN (LabTHN). Este sistema compreende uma máquina 
-mestra e 8 máquinas escravas, todas equipadas com placas gráficas NVidia que podem 
+mestra e 8 máquinas escravas, todas equipadas com placas gráficas Nvidia que podem 
 ser utilizadas tanto para visualização quanto para cálculos em paralelo.
 
 O sistema está parcialmente instalado com Linux CentOS 7.5 com um serviço de 
@@ -19,19 +19,19 @@ de disco e com os seguintes sistemas instalados:
 	\item Serpent Monte Carlo;
 	\item MCNP 6;
 	\item OpenFOAM versão 6;
-	\item Pacote ANSYS;
+	\item Pacote ANSYS [instalado, dependente de testes];
 	\item Scale;
+	\item Matlab [instalado, dependente de testes].
 \end{itemize}
 
 \textbf{Sub-atividades}
 
 A partir da situação atual do cluster, as sequintes atividades estão previstas:
 \begin{itemize}
-	\item[1] Adição de pontos de montagem para os dados e aplicações em diretórios 
-	padrão em todas as máquinas (\texttt{/gv/data} e \texttt{/gv/apps});
-	\item[2] Criação de link simbólico de diretório na conta do usuário para um 
-	diretório com seu nome no ponto de montagem criado (\texttt{/gv/data/<user>})
-	\item[3] Instalação e testes dos softwares descritos;
+	\item[1] Instalação e testes dos softwares descritos;
+	\item[2] Instalação do Slurm para lançamento de aplicações e controle de 
+	carga de trabalho do sistema.;
+	\item[3] Implementação de quotas gluster via diretórios (\texttt{/gv/data/<user>};
 	\item[4] Implementação de capacidade de visualização remota pelas placas gráficas a partir de outras máquinas Linux do LabTHN.
 	\item[5] Avaliação da viabilidade de um hub para exploração dos sistemas de segurança do cluster (power supplies e no-break).
 	\item[6] Avaliação de implantação de desligamento automático em casa de falta de energia atráves de conexão lógica com o sistema de controle do no-break.
@@ -59,4 +59,6 @@ O sistema está hoje fora da rede elétrica do gerador.\\
 
 \textbf{Revisões:}
 \date{21 de novembro de 2018}
+\date{30 de novembro de 2018}
+
 %\date{\today}
