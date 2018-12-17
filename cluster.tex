@@ -14,17 +14,16 @@ O objetivo final deste projeto é ter o cluster funcionando com usuários com co
 de disco e com os seguintes sistemas instalados:
 
 \begin{itemize}
-	\item Serpent2 Monte Carlo;
+	\item \textbf{Serpent2 Monte Carlo [INSTALADO]};
 	\item \textbf{MCNP 6 [INSTALADO]};
 	\item \textbf{OpenFOAM versão 6 [INSTALADO]};
 	\item \textbf{Pacote ANSYS [INSTALADO]};
-	\item Scale;
-	\item \textbf{Matlab [INSTALADO (aguardando testes do Prana]}.
+	\item SCALE;
+	\item \textbf{Matlab [INSTALADO (aguardando testes do Prana)]}.
 \end{itemize}
 
 No presente momento, o sistema NAS está instalado em modo padrão, com duas 
-interfaces de rede 10Gbits conectadas as switch do cluster (endereços IP 
-temporários: \texttt{13.13.13.51} e \texttt{13.13.13.52}) e uma interface 
+interfaces de rede 10Gbits conectadas as switch do cluster (endereços IP:\texttt{nas1: 13.13.13.51} e \texttt{nas2: 13.13.13.52}) e uma interface 
 1Gb conectada à rede do CDTN. A arquitetura a ser usada no NAS ainda está sendo 
 estudada, mas já foi configurado um volume em RAID 10 para o backup das máquinas 
 do LTHN.
@@ -69,8 +68,12 @@ consiste na manutenção e verificação do funcionamento do sistema.\\
 \textbf{Dificuldades/Restrições}
 
 O sistema está hoje fora da rede elétrica do gerador.\\
+
 Em 13/12/2018 um dos equipamentos de ar-condionado da sala do cluster falhou. A equipe de manutenção do CDTN foi acionado no mesmo dia.\\
 
+É necessário solicitar a instalação de uma tomada 110V para a ligação do hub 
+(disponibilizado pelo Élcio) e dos equipamentos de rede que vão necessitar 
+dessas conexãos.\\
 
 Última modificação: \date{\today}
 
