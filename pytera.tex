@@ -15,13 +15,18 @@ Este deve ser o trabalho de doutorado do Diego da INB, sendo que minha participa
 será na orientação do desenvolvimento de acordo com as práticas de documentação, 
 testes e desenvolvimento nos moldes de software livre.
 
-A validação do desenvolvimento deverá ser feita com o Pantera original.
+A validação do desenvolvimento deverá ser feita com o Pantera original. Para isso, deverão 
+ser executadas algumas tarefas básicas do ponto de vista de desenvolvimento de software.
 
 \textbf{Sub-atividades:}
 
 \begin{itemize}
-	\item \textbf{[A DEFINIR]}
-%	\item[2]
+	\item[1] Compilação do Pantera no ambiente de desenvolvimento a ser desenvolvido o Pytera. 
+	Inicialmente, está pensado unicamente para Linux. A compilação em ambiente utilizado atualmente 
+	é fundamental pois, para validar a nova versão, é preciso ter a versão anterior funcionando.
+	\item[2] Devem ser feitos \textit{regression tests}. Estes visam garantir que as funcionalidades 
+	implementadas geram os mesmos resultados que o programa original. Cabe ressaltar que, no caso de \textit{bugs}, 
+	estes devem ser corrigidos.
 %	\item[3]
 \end{itemize}
 
@@ -30,6 +35,12 @@ A validação do desenvolvimento deverá ser feita com o Pantera original.
 Pode não valer a pena a utilização de GPUs para o problema em questão. Além disso, 
 como o desenvolvimento se dará em Python, é necessário buscar bibliotecas que 
 ofereçam (numba, por exemplo) a possibilidade de usar as GPUS do Python.\\
+
+O procedimento relativo a \textit{regression tests} deve ser igualmente realizado para 
+o projeto PyPrana.\\
+
+Uma boa referência para esta atividade é o artigo: "Heirloom Software: the Past as Adventure", de Eric S. Raymond, 
+publicado na Linux Journal, setembro de 2017, páginas 108-118.
 
 \textbf{\textit{Outcomes}}
 
