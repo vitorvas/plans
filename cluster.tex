@@ -28,16 +28,22 @@ interfaces de rede 10Gbits conectadas as switch do cluster (endereços IP:\textt
 estudada, mas já foi configurado um volume em RAID 10 para o backup das máquinas 
 do LTHN.
 
+A autenticação é feita tanto com chaves públicas e privadas com SSH mas também 
+está instalado o serviço RSH para autenticação sem criptografia. Isso funciona 
+apenas internamente, entre máquinas do cluster e o master. O método 
+\textit{hostbased authentication} falhou nas tentativas de configuração e, portanto, foi abandonado até um segundo momento, sendo utilizadas as duas 
+formas acima de autenticação.\\
+
 \textbf{Sub-atividades}
 
 A partir da situação atual do cluster, as sequintes atividades estão previstas:
 \begin{itemize}
-	\item[1] \textbf{Modificação da forma de autenticação dos hosts de chaves 
-	para autenticação no host}. Isso é fundamental para simplificar a criação 
-	de contas de usuários e diminuir o volume de dados de chaves armazenadas em 
-	um diretório \texttt{/home} compartilhado\footnote{"As configurações do \textit{host based authentication} falharam. Mais esforços serão empregados até um limite de tempo razoável. No entanto, caso o problema persista, será utilizada a solução atual com chaves públicas e primárias por usuário. Esta solução torna mais custosa a criação de contas de usuários, mas está funcional.};
-	\item[2] Instalação e testes dos softwares descritos;
-	\item[3] Instalação do TORQUE para lançamento de aplicações e controle de 
+%	\item[1] \textbf{Modificação da forma de autenticação dos hosts de chaves 
+%	para autenticação no host}. Isso é fundamental para simplificar a criação 
+%	de contas de usuários e diminuir o volume de dados de chaves armazenadas em 
+%	um diretório \texttt{/home} compartilhado\footnote{"As configurações do \textit{host based authentication} falharam. Mais esforços serão empregados até um limite de tempo razoável. No entanto, caso o problema persista, será utilizada a solução atual com chaves públicas e primárias por usuário. Esta solução torna mais custosa a criação de contas de usuários, mas está funcional.};
+	\item[1] Instalação e testes dos softwares descritos (falta apenas o SCALE);
+	\item[2] Instalação do TORQUE ou Slurm\footnote{O Torque é o sistema padrão so CentOS. Entretanto, na literatura o Slurm é mais utilizado e será a provável escolha para o nosso cluster.} para lançamento de aplicações e controle de 
 	carga de trabalho do sistema;
 	\item[4] Implementação de capacidade de visualização remota pelas placas gráficas a partir de outras máquinas Linux do LTHN.
 	\item[5] Avaliação da viabilidade de um hub para exploração dos sistemas de segurança do cluster (power supplies e no-break).
@@ -47,7 +53,7 @@ A partir da situação atual do cluster, as sequintes atividades estão prevista
 As sub-atividades listadas são atualizadas a cada revisão no documento, sendo que 
 as sub-atividades finalizadas são removidas da lista e, de acordo com a demanda, 
 são acrescidas novas tarefas. Por exemplo, a instalação do NAS ou a instalação do 
-matlab, que não estavam no projeto inicial do cluster.
+matlab, que não estavam no projeto inicial do cluster.\\
 
 \textbf{Observações:}
 
