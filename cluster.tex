@@ -8,7 +8,9 @@
 de Termohidráulica e Neutrônica do CDTN (LTHN). Este sistema compreende uma máquina mestra e 8 máquinas escravas, todas equipadas com placas gráficas Nvidia que podem ser utilizadas tanto para visualização quanto para cálculos em paralelo.
 
 O sistema está parcialmente instalado com Linux CentOS 7.5 com um serviço de 
-sistema de arquivos distribuído Gluster ativo. 
+sistema de arquivos distribuído Gluster ativo. Atualmente o sistema também tem 
+o sincronismo de timestamp entre nós e mestre. Isso é fundamental para evitar 
+erros de sincronismo de arquivos (data mismatch).
 
 O objetivo final deste projeto é ter o cluster funcionando com usuários com cotas 
 de disco e com os seguintes sistemas instalados:
