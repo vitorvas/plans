@@ -57,6 +57,10 @@ as sub-atividades finalizadas são removidas da lista e, de acordo com a demanda
 são acrescidas novas tarefas. Por exemplo, a instalação do NAS ou a instalação do 
 matlab, que não estavam no projeto inicial do cluster.\\
 
+Foi instalado o Apache2 como servidor web no playerone para permitir o acompanhamento da carga no cluster via \textbf{Ganglia}. Este foi instalado 
+e funciona perfeitamente. Entretanto, não é possível acessar o serviço \texttt{http} no mestre a partir de outras máquinas na rede do CDTN. Como isso 
+pode não ser possível devido às restrições da rede, é possível usar (com limitações) o Firefox local via conexão \texttt{ssh} com \textit{X11 Forward}.\\
+
 \textbf{Observações:}
 
 O processo de instalação pode levar a demandas não previstas, de acordo com as avalições feitas para implantação de determinada \textit{feature} no sistema.
