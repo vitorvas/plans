@@ -21,14 +21,18 @@ de disco e com os seguintes sistemas instalados:
 	\item \textbf{OpenFOAM versão 6 [INSTALADO]};
 	\item \textbf{Pacote ANSYS [INSTALADO]};
 	\item SCALE;
-	\item \textbf{Matlab [INSTALADO (aguardando testes do Prana)]}.
+	\item \textbf{Matlab [INSTALADO (aguardando testes do Prana pelo André depois 
+	da chegada da toolbox de processamento distribuído)]}.
 \end{itemize}
 
 No presente momento, o sistema NAS está instalado em modo padrão, com duas 
-interfaces de rede 10Gbits conectadas as switch do cluster (endereços IP:\texttt{nas1: 13.13.13.51} e \texttt{nas2: 13.13.13.52}) e uma interface 
-1Gb conectada à rede do CDTN. A arquitetura a ser usada no NAS ainda está sendo 
-estudada, mas já foi configurado um volume em RAID 10 para o backup das máquinas 
-do LTHN.
+interfaces de rede 10Gbits conectadas as switch do cluster e uma interface 
+1Gb conectada à rede do CDTN. As intefaces 10Gb estão unidas num \textit{bond}. 
+O nome e endereço ip desse bond é \texttt{nas 13.13.13.60}. Há um compartilhamento 
+NFS sendo usado pelo cluster que fica armazenado no NAS. Este compartilhamento 
+está montado em todos os nós e é utilizado apenas como repositório dos pacotes 
+slurm. Pode ser que seja interessante usar um compartilhamento NFS no NAS para 
+outras aplicações no futuro, mas ainda não há definição sobre isso.
 
 A autenticação é feita tanto com chaves públicas e privadas com SSH mas também 
 está instalado o serviço RSH para autenticação sem criptografia. Isso funciona 
@@ -45,13 +49,15 @@ A partir da situação atual do cluster, as sequintes atividades estão prevista
 %	de contas de usuários e diminuir o volume de dados de chaves armazenadas em 
 %	um diretório \texttt{/home} compartilhado\footnote{"As configurações do \textit{host based authentication} falharam. Mais esforços serão empregados até um limite de tempo razoável. No entanto, caso o problema persista, será utilizada a solução atual com chaves públicas e primárias por usuário. Esta solução torna mais custosa a criação de contas de usuários, mas está funcional.};
 	\item[1] Instalação e testes dos softwares descritos (falta apenas o SCALE);
-	\item[2] Finalizar a instalação do Slurm\footnote{O Torque é o sistema padrão so CentOS. Entretanto, na literatura o Slurm é mais utilizado e será a provável escolha para o nosso cluster.} para lançamento de aplicações e controle de 
-	carga de trabalho do sistema;
-	\item[3] Implementação de capacidade de visualização remota pelas placas gráficas a partir de outras máquinas Linux do LTHN.
-	\item[4] Avaliação da viabilidade de um hub para exploração dos sistemas de segurança do cluster (power supplies e no-break).
-	\item[5] Avaliação de implantação de desligamento automático em casa de falta de energia atráves de conexão lógica com o sistema de controle do no-break.
-	\item[6] Talvez valha a pena centralizar o repositório de aplicações no NAS, de modo que qualquer eventual instalação seja a partir dele, com apenas o playerone acessando a internet e atualizando esse repositório. Ele seria montado via NAS.
+%	\item[2] Finalizar a instalação do Slurm\footnote{O Torque é o sistema padrão so CentOS. Entretanto, na literatura o Slurm é mais utilizado e será a provável escolha para o nosso cluster.} para lançamento de aplicações e controle de 
+%	carga de trabalho do sistema;
+	\item[2] Implementação de capacidade de visualização remota pelas placas gráficas a partir de outras máquinas Linux do LTHN.
+	\item[3] Avaliação da viabilidade de um hub para exploração dos sistemas de segurança do cluster (power supplies e no-break).
+	\item[4] Avaliação de implantação de desligamento automático em casa de falta de energia atráves de conexão lógica com o sistema de controle do no-break.
 \end{itemize}
+
+Uma possível centralização de repositórios no NAS foi adiada, já que não se pretende, no curto prazo, promover atualizações de pacotes no Cluster uma vez 
+funcional. Quando for interessante tecnicamente, isso será feito de modo a centralizar o repositório de aplicações no NAS, para que qualquer eventual instalação seja a partir dele, com apenas o playerone acessando a internet e atualizando esse repositório. Ele seria montado via NFS (já habilitado no NAS).
 
 As sub-atividades listadas são atualizadas a cada revisão no documento, sendo que 
 as sub-atividades finalizadas são removidas da lista e, de acordo com a demanda, 
@@ -59,8 +65,12 @@ são acrescidas novas tarefas. Por exemplo, a instalação do NAS ou a instalaç
 matlab, que não estavam no projeto inicial do cluster.\\
 
 Foi instalado o Apache2 como servidor web no playerone para permitir o acompanhamento da carga no cluster via \textbf{Ganglia}. Este foi instalado 
-e funciona perfeitamente. Entretanto, não é possível acessar o serviço \texttt{http} no mestre a partir de outras máquinas na rede do CDTN. Como isso 
-pode não ser possível devido às restrições da rede, é possível usar (com limitações) o Firefox local via conexão \texttt{ssh} com \textit{X11 Forward}.\\
+e funciona perfeitamente. Foi feita uma página inicial com o logotipo do LTHN 
+que leva até o Ganglia (\texttt{http://playerone.usuarios.cdtn.br}).\\
+
+O \textit{Slurm} está instalado e funcional. Mas são recomendados mais testes. 
+Além disso, deverá ser preparada uma apresentação de como usar o cluster 
+para \textbf{todos} os membros do LTHN.\\
 
 \textbf{Observações:}
 

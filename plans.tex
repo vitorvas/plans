@@ -21,17 +21,34 @@
 \usepackage{vhistory}
 \usepackage{xr} % referenciar arquivos externos
 \usepackage{hyperref} % Pra link http funcionar
+\usepackage{graphicx} % Pra incluir o logo do laboratorio
 
 \externaldocument{prana}
 \externaldocument{pytera}
 
 
 \begin{document}
-\title{Projetos e atividades para 2019}
-\author{Vitor Vasconcelos Araújo Silva\\ vitors@cdtn.br}
-\date{\today}
 
-\maketitle %cria o título
+\begin{titlepage}
+    \centering
+    \vfill
+    {\bfseries\Large
+		Projetos e atividades para 2019\\
+		\vskip2cm
+	    \includegraphics[width=8cm]{lthn.png} % also works with logo.pdf
+
+        \vskip2cm
+		Vitor Vasconcelos Araújo Silva\\ 
+		vitors@cdtn.br\\
+		\vskip3cm
+		\today\\
+
+    }    
+    \vfill
+\end{titlepage}
+
+
+%\maketitle %cria o título
 
 %\def \negritovi {\textbf} %Criando comandos
 
