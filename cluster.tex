@@ -49,7 +49,7 @@ A partir da situação atual do cluster, as sequintes atividades estão prevista
 %	de contas de usuários e diminuir o volume de dados de chaves armazenadas em 
 %	um diretório \texttt{/home} compartilhado\footnote{"As configurações do \textit{host based authentication} falharam. Mais esforços serão empregados até um limite de tempo razoável. No entanto, caso o problema persista, será utilizada a solução atual com chaves públicas e primárias por usuário. Esta solução torna mais custosa a criação de contas de usuários, mas está funcional.};
 	\item[1] Implementação de um script para adição (e remoção de usuários), levando-se em conta criar diretório em /gv/data, criar link simbólico, criar quota gluster, criação de usuário em todas as máquinas\footnote{Eventualmente pode ser implementado um sistema sem login para os nós mas com acesso via ssh aos nós. Isso seria útil pois reforçaria a necessidade do uso da submissão de \textit{jobs}.}.
-	\item[2] Revisão da configuração do \textit{Slurm} para utilização de 18 processadores do \texttt{playerone}. Também é desejável configurá-lo para gerar um log de utilização de \textit{jobs}.
+	\item[2] Configurar o \texttt{glusterdb} para armazenar informações \textit{log} de utilização de \textit{jobs}.
 %	\item[2] Finalizar a instalação do Slurm\footnote{O Torque é o sistema padrão so CentOS. Entretanto, na literatura o Slurm é mais utilizado e será a provável escolha para o nosso cluster.} para lançamento de aplicações e controle de 
 %	carga de trabalho do sistema;
 	\item[3] Implementação de capacidade de visualização remota pelas placas gráficas a partir de outras máquinas Linux do LTHN.
@@ -101,6 +101,6 @@ Em 13/12/2018 um dos equipamentos de ar-condionado da sala do cluster falhou. A 
 (disponibilizado pelo Élcio) e dos equipamentos de rede que vão necessitar 
 dessas conexãos.\\
 
-Última modificação: \date{\today}
+%Última modificação: \today
 
-%\date{\today}
+%\today
