@@ -20,7 +20,7 @@ de disco e com os seguintes sistemas instalados:
 	\item \textbf{MCNP 6 [INSTALADO]};
 	\item \textbf{OpenFOAM versão 6 [INSTALADO]};
 	\item \textbf{Pacote ANSYS [INSTALADO]};
-	\item \textbf{SCALE [INSTALADO]};
+	\item SCALE\footnote{A versão executável 6.2.2 está instalada, mas é necessário compilar a versão 6.2.3 com MPI para utilização em paralelo.};
 	\item \textbf{Matlab [INSTALADO (aguardando testes do Prana pelo André depois 
 	da chegada da toolbox de processamento distribuído)]}.
 \end{itemize}
@@ -73,11 +73,13 @@ que leva até o Ganglia (\texttt{http://playerone.usuarios.cdtn.br}).\\
 O \textit{Slurm} está instalado e funcional. Mas são recomendados mais testes. 
 Além disso, deverá ser preparada uma apresentação de como usar o cluster 
 para \textbf{todos} os membros do LTHN. O sistema de armazenamento de dados 
-de simulações oferecidos pelo \textit{Slurm} e controlado pelo serviço \texttt{slurmdbd}\\ está funcional, apesar dos relatórios via \texttt{sacct} e 
-\texttt{sreport} não estarem exibindo dados. Entretanto, os dados estão sendo 
-normalmente salvos no SGBD MariaDB instalado para este fim. Considerando 
-que as informações estão sendo armazenadas, a tarefa é considerada concluída apesar 
-de ser desejável investigar a razão dos relatórios estarem vazios.
+de simulações oferecidos pelo \textit{Slurm} e controlado pelo serviço \texttt{slurmdbd}\\ está funcional e os relatórios via \texttt{sacct} e 
+\texttt{sreport} estão exibindo dados.
+
+%ntretanto, os dados estão sendo 
+%normalmente salvos no SGBD MariaDB instalado para este fim. Considerando 
+%que as informações estão sendo armazenadas, a tarefa é considerada concluída apesar 
+%de ser desejável investigar a razão dos relatórios estarem vazios.
 
 As sub-atividades de testes dos softwares instalados permanece, mas não mais como item. Isso se dá pois os testes dependem da disponibilidade dos usuários, da modelagem de casos de testes, etc. Até o presente momento, foram testados o MCNP6 (sem problemas detectados) e OpenFOAM (altíssima latência na decomposição da malha que pode inviabilizar simulações com muitos núcleos. Investigar pois pode estar ligado ao desempenho do \texttt{gluster}).\\
 
