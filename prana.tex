@@ -35,7 +35,13 @@ A tentativa de utilização das aceleradoras gráficas pode não levar a resulta
 melhores do que os de uma paralelização em CPUs.
 
 A utilização das GPUs só é possível após domínio do algoritmo sequencial e 
-eventual paralelização em CPUs.
+eventual paralelização em CPUs.\\
+
+\textbf{Importante:}
+
+\textbf{O algoritmo do prana faz uso extensivo de operações de convolução. Para ganhar 
+em desempenho, nossas operações de convolução serão feitas em 2 passos, com 2 filtros unidimensionais. Essa implementação já é um passo inicial numa eventual 
+paralelização desta etapa do algoritmo.}\\
 
 \textbf{\textit{Outcomes}}
 
