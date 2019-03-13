@@ -20,7 +20,7 @@ de disco e com os seguintes sistemas instalados:
 	\item \textbf{MCNP 6 [INSTALADO]};
 	\item \textbf{OpenFOAM versão 6 [INSTALADO]};
 	\item \textbf{Pacote ANSYS [INSTALADO]};
-	\item SCALE\footnote{A versão executável 6.2.2 está instalada, mas é necessário compilar a versão 6.2.3 com MPI para utilização em paralelo.};
+	\item SCALE
 	\item \textbf{Matlab [INSTALADO (aguardando testes do Prana pelo André depois 
 	da chegada da toolbox de processamento distribuído)]}.
 \end{itemize}
@@ -56,6 +56,11 @@ A partir da situação atual do cluster, as sequintes atividades estão prevista
 	\item[2] Implementação de capacidade de visualização remota pelas placas gráficas a partir de outras máquinas Linux do LTHN.
 	\item[3] Avaliação da viabilidade de um hub para exploração dos sistemas de segurança do cluster (power supplies e no-break).
 	\item[4] Avaliação de implantação de desligamento automático em casa de falta de energia atráves de conexão lógica com o sistema de controle do no-break.
+	\item[5] Configuração fina das dependências entre serviços de monitoramento 
+	do cluster e do sistema de arquivos gluster, de modo a evitar que serviços 
+	interdependentes sejam inicializados aleatoriamente quebrando eventual 
+	dependência.
+	\item[6] Preparar uma apresentação sobre o cluster e como utilizá-lo. Esta apresentação visa, inicialmente, a equipe (alunos e servidores) do LTHN.
 \end{itemize}
 
 Uma possível centralização de repositórios no NAS foi adiada, já que não se pretende, no curto prazo, promover atualizações de pacotes no Cluster uma vez 
@@ -64,24 +69,18 @@ funcional. Quando for interessante tecnicamente, isso será feito de modo a cent
 As sub-atividades listadas são atualizadas a cada revisão no documento, sendo que 
 as sub-atividades finalizadas são removidas da lista e, de acordo com a demanda, 
 são acrescidas novas tarefas. Por exemplo, a instalação do NAS ou a instalação do 
-matlab, que não estavam no projeto inicial do cluster.\\
+matlab, que não estavam no projeto inicial do cluster.
 
 Foi instalado o Apache2 como servidor web no playerone para permitir o acompanhamento da carga no cluster via \textbf{Ganglia}. Este foi instalado 
 e funciona perfeitamente. Foi feita uma página inicial com o logotipo do LTHN 
-que leva até o Ganglia (\texttt{http://playerone.usuarios.cdtn.br}).\\
+que leva até o Ganglia (\texttt{http://playerone.usuarios.cdtn.br}).
 
-O \textit{Slurm} está instalado e funcional. Mas são recomendados mais testes. 
-Além disso, deverá ser preparada uma apresentação de como usar o cluster 
-para \textbf{todos} os membros do LTHN. O sistema de armazenamento de dados 
-de simulações oferecidos pelo \textit{Slurm} e controlado pelo serviço \texttt{slurmdbd}\\ está funcional e os relatórios via \texttt{sacct} e 
-\texttt{sreport} estão exibindo dados.
+O \textit{Slurm} está instalado e funcional. Além disso, deverá ser preparada uma apresentação de como usar o cluster para \textbf{todos} os membros do LTHN. O sistema de armazenamento de dados de simulações oferecidos pelo \textit{Slurm} e controlado pelo serviço \texttt{slurmdbd} está funcional e os relatórios via \texttt{sacct} e \texttt{sreport} estão exibindo dados. \textbf{Está sob avaliação a instalação de um \textit{front-end} para visualização de dados armazenados no banco de dados de utilização do cluster.}
 
-%ntretanto, os dados estão sendo 
-%normalmente salvos no SGBD MariaDB instalado para este fim. Considerando 
-%que as informações estão sendo armazenadas, a tarefa é considerada concluída apesar 
-%de ser desejável investigar a razão dos relatórios estarem vazios.
+As sub-atividades de testes dos softwares instalados permanece, mas não mais como item. Isso se dá pois os testes dependem da disponibilidade dos usuários, da modelagem de casos de testes, etc. Até o presente momento, foram testados o MCNP6 (sem problemas detectados) e OpenFOAM (altíssima latência na decomposição da malha que pode inviabilizar simulações com muitos núcleos. Investigar pois pode estar ligado ao desempenho do \texttt{gluster}).
 
-As sub-atividades de testes dos softwares instalados permanece, mas não mais como item. Isso se dá pois os testes dependem da disponibilidade dos usuários, da modelagem de casos de testes, etc. Até o presente momento, foram testados o MCNP6 (sem problemas detectados) e OpenFOAM (altíssima latência na decomposição da malha que pode inviabilizar simulações com muitos núcleos. Investigar pois pode estar ligado ao desempenho do \texttt{gluster}).\\
+Foi ainda testado o SCALE, mas alguns dos seus componentes são disponíveis apenas 
+em forma sequencial.\\
 
 \textbf{Observações:}
 
@@ -105,12 +104,17 @@ O sistema está hoje fora da rede elétrica do gerador.\\
 
 Em 13/12/2018 um dos equipamentos de ar-condionado da sala do cluster falhou. A equipe de manutenção do CDTN foi acionado no mesmo dia.\\
 
-\textbf{Em 25/01/2019 houve nova falha no sistema de ar-condicionado da sala do cluster e único aparelho funcional falhou}, deixando o sistem sem refrigeração e fazendo com que a sala do cluster atingisse alta temperatura. Foi feito imediatamente um \textit{shutdown} emergencial - antes mesmo de verificar as temperaturas nos núcleos. O cluster encontra-se desligado aguardando a equipe de manutenção\footnote{A equipe de manutenção ainda não havia sido contactada no momento de 
-atualização deste texto}.\\
+Em 25/01/2019 houve nova falha no sistema de ar-condicionado da sala do cluster e único aparelho funcional falhou, deixando o sistem sem refrigeração e fazendo com que a sala do cluster atingisse alta temperatura. Foi feito imediatamente um \textit{shutdown} emergencial - antes mesmo de verificar as temperaturas nos núcleos. O reparo dos equipamentos foi feito e, em 13/03/2019, 
+o sistema de ar-condicionado funciona normalmente.\\
 
 É necessário solicitar a instalação de uma tomada 110V para a ligação do hub 
 (disponibilizado pelo Élcio) e dos equipamentos de rede que vão necessitar 
 dessas conexãos.\\
+
+\textbf{Em 13/03/2019: O nó \texttt{CORAGEM} segue apresentando erros que levam a um reboot que não termina, deixando a máquina em estado "hang". Vitor e Daniel estão responsáveis pelo contato e forma de acionamento da garantia da DELL. Está 
+sendo investigada (via logs) a razão da pane de forma a fornecer detalhes 
+do erro para a garantia DELL.}\\
+
 
 %Última modificação: \today
 
