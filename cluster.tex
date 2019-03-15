@@ -20,9 +20,8 @@ de disco e com os seguintes sistemas instalados:
 	\item \textbf{MCNP 6 [INSTALADO]};
 	\item \textbf{OpenFOAM versão 6 [INSTALADO]};
 	\item \textbf{Pacote ANSYS [INSTALADO]};
-	\item SCALE
-	\item \textbf{Matlab [INSTALADO (aguardando testes do Prana pelo André depois 
-	da chegada da toolbox de processamento distribuído)]}.
+	\item \textbf{SCALE [INSTALADO]};
+	\item \textbf{Matlab [INSTALADO]}.
 \end{itemize}
 
 No presente momento, o sistema NAS está instalado em modo padrão, com duas 
@@ -75,7 +74,7 @@ Foi instalado o Apache2 como servidor web no playerone para permitir o acompanha
 e funciona perfeitamente. Foi feita uma página inicial com o logotipo do LTHN 
 que leva até o Ganglia (\texttt{http://playerone.usuarios.cdtn.br}).
 
-O \textit{Slurm} está instalado e funcional. Além disso, deverá ser preparada uma apresentação de como usar o cluster para \textbf{todos} os membros do LTHN. O sistema de armazenamento de dados de simulações oferecidos pelo \textit{Slurm} e controlado pelo serviço \texttt{slurmdbd} está funcional e os relatórios via \texttt{sacct} e \texttt{sreport} estão exibindo dados. \textbf{Está sob avaliação a instalação de um \textit{front-end} para visualização de dados armazenados no banco de dados de utilização do cluster.}
+O \textit{Slurm} está instalado e funcional. O sistema de armazenamento de dados de simulações oferecidos pelo \textit{Slurm} e controlado pelo serviço \texttt{slurmdbd} está funcional e os relatórios via \texttt{sacct} e \texttt{sreport} estão exibindo dados. \textbf{Está sob avaliação a instalação de um \textit{front-end} para visualização de dados armazenados no banco de dados de utilização do cluster.}
 
 As sub-atividades de testes dos softwares instalados permanece, mas não mais como item. Isso se dá pois os testes dependem da disponibilidade dos usuários, da modelagem de casos de testes, etc. Até o presente momento, foram testados o MCNP6 (sem problemas detectados) e OpenFOAM (altíssima latência na decomposição da malha que pode inviabilizar simulações com muitos núcleos. Investigar pois pode estar ligado ao desempenho do \texttt{gluster}).
 
@@ -115,6 +114,7 @@ dessas conexãos.\\
 sendo investigada (via logs) a razão da pane de forma a fornecer detalhes 
 do erro para a garantia DELL.}\\
 
+\textbf{Em 14/03/2019: O nó \texttt{ZUMBI} apresentou o mesmo erro apresentado pelo nó \texttt{CORAGEM}.}
 
 %Última modificação: \today
 
