@@ -1,4 +1,5 @@
 \chapter{Novo cluster: instalação e gerência}
+\label{chap:cluster}
 
 \textbf{Motivação:} $\star\star\star\star\star$\\
 
@@ -101,24 +102,21 @@ consiste na manutenção e verificação do funcionamento do sistema.\\
 
 O sistema está hoje fora da rede elétrica do gerador.\\
 
-Em 13/12/2018 um dos equipamentos de ar-condionado da sala do cluster falhou. A equipe de manutenção do CDTN foi acionado no mesmo dia.\\
+%Em 13/12/2018 um dos equipamentos de ar-condionado da sala do cluster falhou. A equipe de manutenção do CDTN foi acionado no mesmo dia.\\
 
-Em 25/01/2019 houve nova falha no sistema de ar-condicionado da sala do cluster e único aparelho funcional falhou, deixando o sistem sem refrigeração e fazendo com que a sala do cluster atingisse alta temperatura. Foi feito imediatamente um \textit{shutdown} emergencial - antes mesmo de verificar as temperaturas nos núcleos. O reparo dos equipamentos foi feito e, em 13/03/2019, 
-o sistema de ar-condicionado funciona normalmente.\\
+%Em 25/01/2019 houve nova falha no sistema de ar-condicionado da sala do cluster e único aparelho funcional falhou, deixando o sistem sem refrigeração e fazendo com que a sala do cluster atingisse alta temperatura. Foi feito imediatamente um \textit{shutdown} emergencial - antes mesmo de verificar as temperaturas nos núcleos. O reparo dos equipamentos foi feito e, em 13/03/2019, o sistema de ar-condicionado funciona normalmente.\\
 
 É necessário solicitar a instalação de uma tomada 110V para a ligação do hub 
 (disponibilizado pelo Élcio) e dos equipamentos de rede que vão necessitar 
 dessas conexãos.\\
 
-Em 13/03/2019: O nó \texttt{CORAGEM} segue apresentando erros que levam a um reboot que não termina, deixando a máquina em estado "hang". Vitor e Daniel estão responsáveis pelo contato e forma de acionamento da garantia da DELL. Está 
-sendo investigada (via logs) a razão da pane de forma a fornecer detalhes 
-do erro para a garantia DELL.\\
+%Em 13/03/2019: O nó \texttt{CORAGEM} segue apresentando erros que levam a um reboot que não termina, deixando a máquina em estado "hang". Vitor e Daniel estão responsáveis pelo contato e forma de acionamento da garantia da DELL. Está sendo investigada (via logs) a razão da pane de forma a fornecer detalhes do erro para a garantia DELL.\\
 
-Em 14/03/2019: O nó \texttt{ZUMBI} apresentou o mesmo erro apresentado pelo nó \texttt{CORAGEM}.\\
+%Em 14/03/2019: O nó \texttt{ZUMBI} apresentou o mesmo erro apresentado pelo nó \texttt{CORAGEM}.\\
 
-Em 26/03/2019: o nó \texttt{CORAGEM} teve sua BIOS e o firmware do iDRAC atualizados. Todos os outros
-nós tiveram o repositório \textit{DELL} adicionado e deverão também ser atualizados oportunamente. Nesta
-mesma data o cluster teve de ser desligado para nova verificação do sistema elétrico.
+Em 03/04/2019: todos os nós tiveram sua BIOS atualizada (para a versão 2.9.1). O firmware do iDRAC foi também atualizado (para a versão 2.61.60.60), à exceção dos nós \texttt{GALO} e \texttt{INSOLENTE} (que permanecem com a versão 2.40.40.40). A razão de não-atualização nestes nós foi de falha do download do arquivo pelo sistema de updates da Dell (\texttt{dsu}). Essa configuração será mantida 
+até que seja feitos testes e, caso nenhum nó apresente comportamento errático, 
+a configuração sem atualização será mantida.
 
 
 %Última modificação: \today

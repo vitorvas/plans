@@ -25,8 +25,11 @@ cluster.
 \begin{itemize}
 	\item[1] Descrição do algoritmo utilizado para análise do PIV do André 
 	formalmente (texto) e visualmente, objetivando futura documentação do 
-	código produzido;
+	código produzido.
 	\item[2] Implementação em Python das funções de leitura de imagens.
+	\item[3] Diagrama de classes (tentativo).
+	\item[4] Avaliar a possibilidade de uso de \textit{regression tests} para 
+	este projeto.
 \end{itemize}
 
 \textbf{Observações:}
@@ -47,9 +50,7 @@ de remoção de \textit{background} de imagens.
 
 \textbf{Importante:}
 
-\textbf{O algoritmo do prana faz uso extensivo de operações de convolução. Para ganhar 
-em desempenho, nossas operações de convolução serão feitas em 2 passos, com 2 filtros unidimensionais. Essa implementação já é um passo inicial numa eventual 
-paralelização desta etapa do algoritmo.}\\
+O algoritmo do prana faz uso extensivo de operações de convolução. Para ganhar em desempenho, nossas operações de convolução PODERÃO serão feitas em 2 passos, com 2 filtros unidimensionais, caso o filtro de convolução a ser utilizado seja possível de ser decomposto em duas dimensões. Caso afirmativo, essa implementação já é um passo inicial numa eventual paralelização desta etapa do algoritmo.\\
 
 \textbf{\textit{Outcomes}}
 

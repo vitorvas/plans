@@ -1,0 +1,50 @@
+\chapter{LTHN}
+
+\textbf{Motivação:} $\star\star\star$\\
+
+\textbf{Tipo:} Projeto (que se tornará uma atividade)\\
+
+\textbf{Descrição:} Há anos o Laboratório de Termo-Hidráulica e Neutrônica (\textbf{LTHN}) funciona na metodologia de demanda-solução. Com isso, o parque 
+computacional, hoje com 6 servidores e 8 desktops, é heterogêneo. São equipamentos 
+com hardware similar - mas não exatamente igual - mas com uma variedade de sistemas 
+operacionais. Entre Windows e diferentes versões de Linux, temos atualmente 2 sistemas operacionais, sendo duas distribuições Linux (Fedora e CentOS) em 
+versões variadas.\\
+
+\textbf{Sub-atividades:}
+
+Num primeiro momento e já contando com a recém aquisição do sistema NAS utilizado 
+no cluster LTHN\ref{chap:cluster} a ideia inicial é ter contas individuais para os 
+usuários\footnote{Hoje há uma conta única (\texttt{cfx}) por todos os usuários.} 
+centralizadas em uma máquina. Com isso será possível logar individualmente em qualquer máquina Linux. Além disso, é desejável que os diretórios dos usuários 
+(\texttt{/home/<user>}) estejam localizados no NAS com implementação de cotas e que 
+esse diretório seja carregado localmente via NFS a cada \textit{login} de usuário.
+
+\begin{itemize}
+	\item[1] Implementação de contas centralizadas para usuários do LTHN.
+	\item[2] Implementação de \texttt{/home} exportado via NFS para usuários.
+	\item[3] Instalação de software de uso geral (Serpent, OpenFOAM, MCNP e outros) no disco compartilhado do NAS via NFS.
+\end{itemize}
+
+\textbf{Observações:}
+
+As atividades aqui previstas não serão em nenhuma hipótese iniciadas antes da entrega do cluster do LTHN.\\
+
+\textbf{\textit{Outcomes}}
+
+A solução de contas locais permite controle de uso de espaço em disco, backup 
+centralizado, evita duplicidade de dados e dificulta, ainda, confusão de versões 
+de arquivos.\\
+
+\textbf{Dificuldades/Restrições}
+
+A solução proposta exige administração local de contas (em outras palavras: tempo 
+de gerenciamento de recursos computacionais) e não resolve o problema crônico 
+de acesso às impressoras do CDTN\footnote{Este problema já foi levado e é de conhecimento do SETIN. Uma eventual solução para contas corporativas está sendo 
+investigada por eles.}
+
+A eventual solução corporativa de contas evita a gerência local e muito provavelmente permitirá o uso de impressoras. Entretanto, \textbf{é necessário 
+que as máquinas servidoras sejam capazes de se comunicar via MPI} com o objetivo 
+de simulações-teste antes que o problema completo seja submetido ao cluster. A 
+solução corporativa não contempla este cenário.\\
+
+\textbf{Última revisão:} \today
