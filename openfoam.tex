@@ -1,8 +1,7 @@
-\chapter{OpenFOAM solver \texttt{chtMultiRegionFoam}}
+\chapter{\textcolor{red}{FINALIZADO}: OpenFOAM solver} 
+%\textbf{Motivação:} $\star$\\
 
-\textbf{Motivação:} $\star$\\
-
-\textbf{Tipo:} Projeto\\
+\textbf{Tipo:} Projeto - \texttt{sourceTermChtMultiRegionFoam}\\
 
 \textbf{Descrição:}
 
@@ -11,49 +10,34 @@ OpenFOAM versão 6 para utilizar internamente um termo-fonte nas equações
 de energia.
 
 Apesar de ser possível (e já termos feito) uso de termo-fonte através do 
-metódo \textit{fvOptions} do OpenFOAM, acreditamos ser mais interessante 
-modificar o solver. São modificações que já foram feitas anteriormente 
-para a versão 2.2. Além disso, com o termo-fonte interno é mais facilmente 
-visualizável o resultado pelo paraview.
+metódo \textit{fvOptions} do OpenFOAM, não conseguimos descrever um termo-fonte
+não uniforme, ou seja, não foi possível passar como termo-fonte um campo não-uniforme
+de densidade de potências. Além disso, com o termo-fonte interno é mais facilmente 
+visualizável o resultado pelo paraview tanto na sua forma original como interpolada, esta
+última uma \textit{feature} do próprio paraview.
 
 O objetivo desse projeto é ter um solver atualizado para ser usado no acoplamento 
-OpenFOAM+Serpent a ser (provavelmente) feito como tema de dissertação de mestrado 
+OpenFOAM+Serpent a ser feito como tema de dissertação de mestrado 
 do Tiago.\\
 
 \textbf{Sub-atividades:}
 
 \begin{itemize}
-	\item[1] Modificar o arquivo \texttt{createSolidFields.H} para criar o volScalar para armazenar o termo-fonte; 
-	\item[2] Modificar o arquivo \texttt{solveSolid.H} para incluir o termo-fonte na equação de energia;
-	\item[3] Verificar se são necessárias modificações no arquivo \texttt{createSolidMeshes.H} para leitura do campo scalar para o termo-fonte.
+  \item[1] Contactar o NIT/CDTN para viabilizar o registro do software.
 \end{itemize}
 
 \textbf{Observações:}
 
-A modificação deve ser feita a partir da criação em separado de um solver 
-(\texttt{chtMultiRegionSourceFoam}) pela cópia dos arquivos em um diretório qualquer.
-
-Os arquivos de compilação utilizados pelo wmake devem refletir essas modificações.
-
-É importante, para além da modificação do solver, ser capaz de fazer convergir os 
-casos de testes originais do OpenFOAM e o caso adaptado da minha tese (disponível 
-no github em: https://github.com/vitorvas/teste5)
-
-Na máquina caprara-lx: \$FOAM\_APP/solvers/heatTransfer/chtMultiRegionFoam\\
-
-A necessidade desta implementação ainda não está comprovada. Caso seja possível e 
-o acoplamento utilizando apenas arquivos padrão OpenFOAM (\texttt{fvOptions}) 
-este projeto será cancelado.\\
+O solver está em:\\
+ \url{https://gitlab.com/vitorvas/sourcetermchtmultiregionfoam.git}\\
 
 \textbf{\textit{Outcomes}}
 
-Esta modificação é muito simples para gerar um programa registrável. Entretanto, 
-num cenário com scripts para a execução acoplada da dissertação do Tiago, isso 
-pode ser viável.\\
+\begin{itemize}
+	\item Programa de computador registrado (produção tecnológica de inovação);
+	\item Paper a ser submetido para o INAC 2019.
+\end{itemize}
 
-\textbf{Dificuldades/Restrições}
-
-Não se espera nada além das mesmas dificuldades da criação do solver para minha 
-tese. \\
+%\textbf{Dificuldades/Restrições}
 
 %\textbf{Última revisão:} \today
