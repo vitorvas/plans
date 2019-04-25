@@ -23,9 +23,10 @@
 \usepackage{hyperref} % Pra link http funcionar
 \usepackage{graphicx} % Pra incluir o logo do laboratorio
 \usepackage{xcolor}
+\usepackage{newunicodechar}
 
-\externaldocument{prana}
-\externaldocument{pytera}
+%\externaldocument{prana}
+%\externaldocument{pytera}
 
 
 \begin{document}
@@ -87,5 +88,9 @@ em cada um deles.
 \include{serp}
 \include{posdoc}
 \include{lthn}
+
+% Added some refernces used in different chapters
+\bibliographystyle{plain}
+\bibliography{plans}
 
 \end{document}
