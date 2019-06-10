@@ -64,7 +64,7 @@ A partir da situação atual do cluster, as sequintes atividades estão prevista
 %	carga de trabalho do sistema;
 %	\item[2] \textcolor{red}{URGENTE}: Modificação do volume \texttt{/gv/data} para evitar os erros de escrita apresentados nas simulações CFD.
 	\item[2] Avaliação da viabilidade de um hub para exploração dos sistemas de segurança do cluster (power supplies e no-break).
-	\item[3] Avaliação de implantação de desligamento automático em casa de falta de energia atráves de conexão lógica com o sistema de controle do no-break.
+	\item[3] Avaliação de implantação de desligamento automático em caso de falta de energia atráves de conexão lógica com o sistema de controle do no-break.
 	\item[4] Configuração fina das dependências entre serviços de monitoramento 
 	do cluster e do sistema de arquivos gluster, de modo a evitar que serviços 
 	interdependentes sejam inicializados aleatoriamente quebrando eventual 
@@ -91,17 +91,9 @@ As sub-atividades de testes dos softwares instalados permanece, mas não mais co
 % (altíssima latência na decomposição da malha que pode inviabilizar simulações com muitos núcleos para. Investigar pois pode estar ligado ao desempenho do \texttt{gluster}).
 
 Foi ainda testado o SCALE, mas alguns dos seus componentes são disponíveis apenas 
-em forma sequencial.
+em forma sequencial.\\
 
-A configuração atual do \textit{Slurm} faz com que o lançamento de jobs dos 
-programas do pacote ANSYS lancem as aplicações seja feita pelo primeiro nó 
-numa lista ordenada alfabeticamente. Entretanto, apenas o \texttt{playerone} 
-tem acesso completo à rede do CDTN onde está o servidor de licenças (\texttt{aldebaran}). A máquina irineu tem o nome de domínio completo, sendo 
-o único dos nós configurado assim. Este nó é capaz de acessar a servidora de 
-licenças. Entretanto, um outro erro ocorre na execução do \texttt{cfx5solve}.
 
-Isto \textbf{é um problema} para o uso total do \textit{cluster} e uma solução já 
-está sob investigação.\\ 
 
 \textbf{Observações:}
 
@@ -155,6 +147,11 @@ Isso \textbf{deve ser corrigido} o mais rapidamente possível. Uma solução pos
 Em 10/06/2019: todos os nós ligados sem falhas há 42 dias (\texttt{uptime}).
 Isso leva a crer que o problema de \textit{reboot} foi resolvido com a
 atualização das BIOS. Manter o sistema ligado para confirmação.
+
+Em 10/06/2019: solucionado o problema de lançamento de jobs via slurm para 
+o \texttt{cfx5solve}. A solução corrige os arquivos \texttt{/etc/hostname} de cada 
+nó para o domínio resolvido das máquinas na rede CDTN. Com isso, todas as máquinas 
+enxergam o servidor de licenças \texttt{aldebaran}.
 
 %Última modificação: \today
 
