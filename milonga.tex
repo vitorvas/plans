@@ -1,4 +1,4 @@
-\chapter{Paralelização do \textit{milonga}}
+\chapter{\textcolor{red}{FINALIZADO}: Paralelização do \textit{milonga}}
 
 \textbf{Motivação:} $\star\star$\\
 
@@ -54,4 +54,25 @@ do milonga.\\
 
 \textbf{Dificuldades/Restrições}
 
-Tempo e esforço envolvidos com risco alto de não ser viável a paralelização.
+Tempo e esforço envolvidos com risco alto de não ser viável a paralelização.\\
+
+\textbf{Resultados}
+
+Vários testes com exemploes do \textit{milonga} para malhas com diferentes números de elementos mostraram, para o método de difusão por volumes finitos, que grande parte 
+do tempo de computação (cerca de $44\%$) é gasto em funções de percurso da malha.
+
+Apenas uma máximo de $10\%$ do tempo é gasto em operações de funções do módulo 
+de difusão. 
+
+A finalização ideal deste projeto seria com um relatório formal de \textit{benchmark} de três diferentes tipos de malhas (em número de elementos) 
+para cada tipo de formulação:
+
+\begin{enumerate}
+\item Difusão volumes finitos;
+\item Difusão elementos finitos;
+\item Ordenadas discretas ($S_N$) volumes finitos;
+\item Ordenadas discretas ($S_N$) elementos finitos;
+\end{enumerate}
+
+Devido à minha saída de licença, esse relatório não seja realizado já que não há 
+potencial de publicação. Entretanto, permanece o interesse didático, em especial no entendimento das formulações e no uso das bibliotecas PETSc e SLEPc.
