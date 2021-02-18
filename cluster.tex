@@ -1,11 +1,11 @@
-\chapter{Novo cluster: instalação e gerência}
+\chapter{Cluster LTHN: atualização e gerência}
 \label{chap:cluster}
 
 \textbf{Motivação:} $\star\star\star\star\star$\\
 
-\textbf{Tipo:} Projeto que se tornará atividade.\\
+\textbf{Tipo:} Atividade.\\
 
-\textbf{Descrição:} Este projeto trata da instalação do novo cluster do Laboratório 
+\textbf{Descrição:} Esta atividade trata da manutenção do cluster do Laboratório 
 de Termohidráulica e Neutrônica do CDTN (LTHN). Este sistema compreende uma máquina mestra e 8 máquinas escravas, todas equipadas com placas gráficas Nvidia que podem ser utilizadas tanto para visualização quanto para cálculos em paralelo.
 
 O sistema está parcialmente instalado com Linux CentOS 7.5 com um serviço de 
@@ -13,41 +13,46 @@ sistema de arquivos distribuído Gluster ativo. Atualmente o sistema também tem
 o sincronismo de timestamp entre nós e mestre. Isso é fundamental para evitar 
 erros de sincronismo de arquivos (data mismatch).
 
-O objetivo final deste projeto é ter o cluster funcionando com usuários com cotas 
-de disco e com os seguintes sistemas instalados:
+%O objetivo final deste projeto é ter o cluster funcionando com usuários com cotas 
+%de disco e com os seguintes sistemas instalados:
 
-\begin{itemize}
-	\item \textbf{Serpent2 Monte Carlo [INSTALADO]};
-	\item \textbf{MCNP 6 [INSTALADO]};
-	\item \textbf{OpenFOAM versão 6 [INSTALADO]};
-	\item \textbf{Pacote ANSYS [INSTALADO]};
-	\item \textbf{SCALE [INSTALADO]};
-	\item \textbf{Matlab [INSTALADO]}.
-\end{itemize}
+%\begin{itemize}
+%	\item \textbf{Serpent2 Monte Carlo [INSTALADO]};
+%	\item \textbf{MCNP 6 [INSTALADO]};
+%	\item \textbf{OpenFOAM versão 6 [INSTALADO]};
+%	\item \textbf{Pacote ANSYS [INSTALADO]};
+%	\item \textbf{SCALE [INSTALADO]};
+%	\item \textbf{Matlab [INSTALADO]}.
+%\end{itemize}
 
-No presente momento, o sistema NAS está instalado em modo padrão, com duas 
-interfaces de rede 10Gbits conectadas as switch do cluster e uma interface 
-1Gb conectada à rede do CDTN. As intefaces 10Gb estão unidas num \textit{bond}. 
-O nome e endereço ip desse bond é \texttt{nas 13.13.13.60}. Há dois compartilhamentos 
-NFS sendo usados pelo cluster que ficam armazenados no NAS. O primeiro compartilhamento, no \textbf{volume1} do NAS, está montado em todos os nós e é utilizado apenas como repositório dos pacotes 
-\textit{Slurm} e tem baxíssima demanda de disco (da ordem de \textit{kilobytes}). 
-O \textbf{volume2} do NAS será usado como diretórios das contas dos usuários.
-Ainda não foi decidido como fazer essa implementação, mas inicialmente o diretório
-\texttt{/home/<user>} nesse arquivo será substituído por \texttt{/mnt/nfs/<user>} 
-no momento da criação das contas. 
+Durante o ano de 2020 foram feitas configurações adicionais pelo André Campagnole de modo a
+permitir que o cluster funcionasse por acesso remoto nas condições da pandemia. Há autenticação
+via LDAP mas desconheço detalhes da instalação. O André redigiu dois documentos (colocar os nomes ou links aqui),
+um sobre o procedimento de instalação e outro sobre a utilização. Será necessário estudar tais documentos.
 
-A autenticação é feita tanto com chaves públicas e privadas com SSH mas também 
-está instalado o serviço RSH para autenticação sem criptografia. Isso funciona 
-apenas internamente, entre máquinas do cluster e o master. 
+%No presente momento, o sistema NAS está instalado em modo padrão, com duas 
+%interfaces de rede 10Gbits conectadas as switch do cluster e uma interface 
+%1Gb conectada à rede do CDTN. As intefaces 10Gb estão unidas num \textit{bond}. 
+%O nome e endereço ip desse bond é \texttt{nas 13.13.13.60}. Há dois compartilhamentos 
+%NFS sendo usados pelo cluster que ficam armazenados no NAS. O primeiro compartilhamento, no \textbf{volume1} do NAS, está montado em todos os nós e é utilizado apenas como repositório dos pacotes 
+%\textit{Slurm} e tem baxíssima demanda de disco (da ordem de \textit{kilobytes}). 
+%O \textbf{volume2} do NAS será usado como diretórios das contas dos usuários.
+%Ainda não foi decidido como fazer essa implementação, mas inicialmente o diretório
+%\texttt{/home/<user>} nesse arquivo será substituído por \texttt{/mnt/nfs/<user>} 
+%no momento da criação das contas. 
+
+%A autenticação é feita tanto com chaves públicas e privadas com SSH mas também 
+%está instalado o serviço RSH para autenticação sem criptografia. Isso funciona 
+%apenas internamente, entre máquinas do cluster e o master. 
 %O método 
 %\textit{hostbased authentication} falhou nas tentativas de configuração e, %portanto, foi abandonado até um segundo momento, sendo utilizadas as duas 
 %formas acima de autenticação.\\
 
-Estava prevista inicialmente a implementação de visualização remota de dados 
-via placas gráficas do cluster. Entretanto, foi adquirida uma placa gráfica 
-de alto desempenho para o LTHN, de modo que a visualização de modelos prévios 
-poderá ser feita fora do cluster. Uma vez que o modelo esteja no cluster, 
-basta fazer a visualização pela máquina mestra.
+%Estava prevista inicialmente a implementação de visualização remota de dados 
+%via placas gráficas do cluster. Entretanto, foi adquirida uma placa gráfica 
+%de alto desempenho para o LTHN, de modo que a visualização de modelos prévios 
+%poderá ser feita fora do cluster. Uma vez que o modelo esteja no cluster, 
+%basta fazer a visualização pela máquina mestra.
 
 \textbf{Sub-atividades}
 
@@ -57,7 +62,7 @@ A partir da situação atual do cluster, as sequintes atividades estão prevista
 %	para autenticação no host}. Isso é fundamental para simplificar a criação 
 %	de contas de usuários e diminuir o volume de dados de chaves armazenadas em 
 %	um diretório \texttt{/home} compartilhado\footnote{"As configurações do \textit{host based authentication} falharam. Mais esforços serão empregados até um limite de tempo razoável. No entanto, caso o problema persista, será utilizada a solução atual com chaves públicas e primárias por usuário. Esta solução torna mais custosa a criação de contas de usuários, mas está funcional.};
-	\item[1] Implementação de um script para adição (e remoção de usuários), levando-se em conta criar diretório em \texttt{/gv/data}, criar link simbólico, criar quota gluster, criação de usuário em todas as máquinas\footnote{Eventualmente pode ser implementado um sistema sem login para os nós mas com acesso via ssh aos nós. Isso seria útil pois reforçaria a necessidade do uso da submissão de \textit{jobs}.}.
+	\item[1] \textbf{[FEITO PELO ANDRÉ]} Implementação de um script para adição (e remoção de usuários), levando-se em conta criar diretório em \texttt{/gv/data}, criar link simbólico, criar quota gluster, criação de usuário em todas as máquinas.%\footnote{Eventualmente pode ser implementado um sistema sem login para os nós mas com acesso via ssh aos nós. Isso seria útil pois reforçaria a necessidade do uso da submissão de \textit{jobs}.}.
 %	\item[2] Finalizar os testes de armazenamento de dados de utilização do cluster (\texttt{sacct} e \texttt{sreport}).
 %	\item[2] Configurar o \texttt{glusterdb} para armazenar informações \textit{log} de utilização de \textit{jobs}.
 %	\item[2] Finalizar a instalação do Slurm\footnote{O Torque é o sistema padrão so CentOS. Entretanto, na literatura o Slurm é mais utilizado e será a provável escolha para o nosso cluster.} para lançamento de aplicações e controle de 
@@ -70,15 +75,17 @@ A partir da situação atual do cluster, as sequintes atividades estão prevista
 	interdependentes sejam inicializados aleatoriamente quebrando eventual 
 	dependência.
 	\item[5] Preparar uma apresentação sobre o cluster e como utilizá-lo. Esta apresentação visa, inicialmente, a equipe (alunos e servidores) do LTHN.
+        \item[6] Implementação da visualização remota (\href{https://www.virtualgl.org/}{VirtualGL}).  
+        \item[7] Melhoria nos programas instalados com o uso de módulos, eventualmente usando o mais moderno \href{https://lmod.readthedocs.io/en/latest/}{Lmod}.
 \end{itemize}
 
-Uma possível centralização de repositórios no NAS foi adiada, já que não se pretende, no curto prazo, promover atualizações de pacotes no Cluster uma vez 
-funcional. Quando for interessante tecnicamente, isso será feito de modo a centralizar o repositório de aplicações no NAS, para que qualquer eventual instalação seja a partir dele, com apenas o playerone acessando a internet e atualizando esse repositório. Ele seria montado via NFS (já habilitado no NAS).
+%Uma possível centralização de repositórios no NAS foi adiada, já que não se pretende, no curto prazo, promover atualizações de pacotes no Cluster uma vez 
+%funcional. Quando for interessante tecnicamente, isso será feito de modo a centralizar o repositório de aplicações no NAS, para que qualquer eventual instalação seja a partir dele, com apenas o playerone acessando a internet e atualizando esse repositório. Ele seria montado via NFS (já habilitado no NAS).
 
 As sub-atividades listadas são atualizadas a cada revisão no documento, sendo que 
 as sub-atividades finalizadas são removidas da lista e, de acordo com a demanda, 
-são acrescidas novas tarefas. Por exemplo, a instalação do NAS ou a instalação do 
-\textit{Matlab}, que não estavam no projeto inicial do cluster.
+são acrescidas novas tarefas. %Por exemplo, a instalação do NAS ou a instalação do 
+%\textit{Matlab}, que não estavam no projeto inicial do cluster.
 
 Foi instalado o Apache2 como servidor web no playerone para permitir o acompanhamento da carga no cluster via \textbf{Ganglia}. Este foi instalado 
 e funciona perfeitamente. Foi feita uma página inicial com o logotipo do LTHN 
@@ -87,11 +94,11 @@ que leva até o Ganglia (\texttt{http://playerone.usuarios.cdtn.br}).
 O \textit{Slurm} está instalado e funcional. O sistema de armazenamento de dados de simulações oferecidos pelo \textit{Slurm} e controlado pelo serviço \texttt{slurmdbd} está funcional e os relatórios via \texttt{sacct} e \texttt{sreport} estão exibindo dados. %\textbf{Está sob avaliação a instalação de um \textit{front-end} para visualização de dados armazenados no banco de dados de utilização do cluster.}
 A princípio, não estão previstas mudanças na configuração do sistema de monitoramento \textit{Ganglia}.
 
-As sub-atividades de testes dos softwares instalados permanece, mas não mais como item. Isso se dá pois os testes dependem da disponibilidade dos usuários, da modelagem de casos de testes, etc. Até o presente momento, foram testados o MCNP6 (sem problemas detectados) e OpenFOAM.
+%As sub-atividades de testes dos softwares instalados permanece, mas não mais como item. Isso se dá pois os testes dependem da disponibilidade dos usuários, da modelagem de casos de testes, etc. Até o presente momento, foram testados o MCNP6 (sem problemas detectados) e OpenFOAM.
 % (altíssima latência na decomposição da malha que pode inviabilizar simulações com muitos núcleos para. Investigar pois pode estar ligado ao desempenho do \texttt{gluster}).
 
-Foi ainda testado o SCALE, mas alguns dos seus componentes são disponíveis apenas 
-em forma sequencial.\\
+%Foi ainda testado o SCALE, mas alguns dos seus componentes são disponíveis apenas 
+%em forma sequencial.\\
 
 
 
@@ -99,54 +106,52 @@ em forma sequencial.\\
 
 O processo de instalação pode levar a demandas não previstas, de acordo com as avalições feitas para implantação de determinada \textit{feature} no sistema.
 
-Uma vez instalado e testado, o projeto passa a ser uma atividade. Esta atividade 
-consiste na manutenção e verificação do funcionamento do sistema.\\
+%Uma vez instalado e testado, o projeto passa a ser uma atividade. Esta atividade 
+%consiste na manutenção e verificação do funcionamento do sistema.\\
 
 \textbf{\textit{Outcomes}}
 
 \begin{itemize}
-	\item[1] Sistema de cálculos para as atividades do LTHN e, eventualmente, para usuários externos.
-	\item[2] Paper INAC 2019 com descrição do processo final de instalação e exemplos de aplicações com tempo de execução \textbf{(Em execução)}.
-
+	\item[1] Publicações oriundas de simulações feitas no cluster.
 \end{itemize}
 
 
 \textbf{Dificuldades/Restrições}
 
-O sistema está hoje fora da rede elétrica do gerador.\\
+O sistema está hoje fora da rede elétrica do gerador (VERIFICAR).\\
 
 %Em 13/12/2018 um dos equipamentos de ar-condionado da sala do cluster falhou. A equipe de manutenção do CDTN foi acionado no mesmo dia.\\
 
 %Em 25/01/2019 houve nova falha no sistema de ar-condicionado da sala do cluster e único aparelho funcional falhou, deixando o sistem sem refrigeração e fazendo com que a sala do cluster atingisse alta temperatura. Foi feito imediatamente um \textit{shutdown} emergencial - antes mesmo de verificar as temperaturas nos núcleos. O reparo dos equipamentos foi feito e, em 13/03/2019, o sistema de ar-condicionado funciona normalmente.\\
 
-É necessário solicitar a instalação de uma tomada 110V para a ligação do hub 
-(disponibilizado pelo Élcio) e dos equipamentos de rede que vão necessitar 
-dessas conexãos.\\
+%É necessário solicitar a instalação de uma tomada 110V para a ligação do hub 
+%(disponibilizado pelo Élcio) e dos equipamentos de rede que vão necessitar 
+%dessas conexãos.\\
 
 %Em 13/03/2019: O nó \texttt{CORAGEM} segue apresentando erros que levam a um reboot que não termina, deixando a máquina em estado "hang". Vitor e Daniel estão responsáveis pelo contato e forma de acionamento da garantia da DELL. Está sendo investigada (via logs) a razão da pane de forma a fornecer detalhes do erro para a garantia DELL.\\
 
 %Em 14/03/2019: O nó \texttt{ZUMBI} apresentou o mesmo erro apresentado pelo nó \texttt{CORAGEM}.\\
 
 Em 03/04/2019: todos os nós tiveram sua BIOS atualizada (para a versão 2.9.1). O firmware do iDRAC foi também atualizado (para a versão 2.61.60.60), à exceção dos nós \texttt{GALO} e \texttt{INSOLENTE} (que permanecem com a versão 2.40.40.40). A razão de não-atualização nestes nós foi de falha do download do arquivo pelo sistema de updates da Dell (\texttt{dsu}). Essa configuração será mantida 
-até que seja feitos testes e, caso nenhum nó apresente comportamento errático, 
+até que sejam feitos testes e, caso nenhum nó apresente comportamento errático, 
 a configuração sem atualização será mantida.\\
 
 %Em 11/04/2019: ficou decidido que não haverá implementação de cotas inicialmente no diretório \texttt{/home} devido ao risco de perda de dados, uma vez que o sistema  está montando como \textit{logical volume}. Neste caso, o volume deve ser reduzido e o espaço remanescente transformado no novo volume para acomodar o diretório \texttt{/home}. Este processo não é livre de riscos que podem comprometer a instalação completa do \texttt{playerone}. Sendo assim, ficou decidido (entre Vitor e André) que, num primeiro momento, não haverá controle de cota nos diretórios dos usuários. Caso seja interessante, no futuro poderá ser criado um volume na partição windows e então, aí movido o \texttt{/home} numa nova partição criada neste volume.
 
-Em 09/05/2019: ficou decidido que as contas dos usuários serão armazenadas na 
-montagem NFS do NAS. Caso não seja viável, ficarão as contas no volume gluster 
-\textbf{apps}, que conta com espaço e facilidade de utilização de quotas.
+%Em 09/05/2019: ficou decidido que as contas dos usuários serão armazenadas na 
+%montagem NFS do NAS. Caso não seja viável, ficarão as contas no volume gluster 
+%\textbf{apps}, que conta com espaço e facilidade de utilização de quotas.
 
-Em 14/05/2019: ao rodar uma simulação com o \textit{Fluent} entre 30 e 44 partições, ocorreram erros sistemáticos de escrita em disco para uma simulação 
-feita no diretório \texttt{scratch}. O ocorrido é similar aos erros encontrados 
-quando testei simulações do \textit{OpenFOAM} também no mesmo diretório. 
-Diagnosticamos isso como um problema do \textit{Gluster} no volume \texttt{data}.
-Isso \textbf{deve ser corrigido} o mais rapidamente possível. Uma solução possível 
-é modificar o volume de \texttt{striped} para um volume sem redundância.
+%Em 14/05/2019: ao rodar uma simulação com o \textit{Fluent} entre 30 e 44 partições, ocorreram erros sistemáticos de escrita em disco para uma simulação 
+%feita no diretório \texttt{scratch}. O ocorrido é similar aos erros encontrados 
+%quando testei simulações do \textit{OpenFOAM} também no mesmo diretório. 
+%Diagnosticamos isso como um problema do \textit{Gluster} no volume \texttt{data}.
+%Isso \textbf{deve ser corrigido} o mais rapidamente possível. Uma solução possível 
+%é modificar o volume de \texttt{striped} para um volume sem redundância.
 
-Em 10/06/2019: todos os nós ligados sem falhas há 42 dias (\texttt{uptime}).
-Isso leva a crer que o problema de \textit{reboot} foi resolvido com a
-atualização das BIOS. Manter o sistema ligado para confirmação.
+%Em 10/06/2019: todos os nós ligados sem falhas há 42 dias (\texttt{uptime}).
+%Isso leva a crer que o problema de \textit{reboot} foi resolvido com a
+%atualização das BIOS. Manter o sistema ligado para confirmação.
 
 Em 10/06/2019: solucionado o problema de lançamento de jobs via slurm para 
 o \texttt{cfx5solve}. A solução corrige os arquivos \texttt{/etc/hostname} de cada 
