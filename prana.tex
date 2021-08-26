@@ -17,6 +17,15 @@ essa implementação nos permitiria tentar fazer uso das aceleradoras gráficas
 do cluster com o desenvolvimento de software específico para aumento de 
 desempenho na análise de dados.
 
+Foi iniciada uma implementação tentativa de uso das GPUs do cluster - que estão
+disponíveis - usando OpenCL. Em 08/2021 uma implementação teste usando a biblioteca
+stb e OpenCL (pocl) para CPUs foi testada. A leitura de imagens, execução do kernel e
+escrita de imagens (formato PNG) estão funcionais. O kernel \textbf{ainda não
+  implementa correlação cruzada}, apenas lê e escreve imagens. É necessário
+complementar estes testes em OpenCL para GPUs.
+
+Além disso a versão testada do OpenCL é a 1.1, que difere de versões mais modernas.
+
 A validação dos resultados pode ser feita com o Prana original executado no 
 cluster.
 
@@ -26,7 +35,10 @@ cluster.
 	\item[1] Descrição do algoritmo utilizado para análise do PIV do André 
 	formalmente (texto) e visualmente, objetivando futura documentação do 
 	código produzido.
-	\item[2] Implementação em Python das funções de leitura de imagens.
+      \item[2] A biblioteca feita em C + OpenCL idealmente será chamada pelo Python (descrição detalhada).
+        \subitem 2.1 Implementação para uma imagem.
+        \subitem 2.2 Chamada para várias imagens com enqueue do OpenCL.
+        \subitem 2.3 Biblioteca ``chamável'' pelo Python.
 	\item[3] Diagrama de classes (tentativo).
 	\item[4] Avaliar a possibilidade de uso de \textit{regression tests} para 
 	este projeto.
@@ -37,25 +49,28 @@ cluster.
 A tentativa de utilização das aceleradoras gráficas pode não levar a resultados 
 melhores do que os de uma paralelização em CPUs.
 
-A utilização das GPUs só é possível após domínio do algoritmo sequencial e 
-eventual paralelização em CPUs.
+%A utilização das GPUs só é possível após domínio do algoritmo sequencial e 
+%eventual paralelização em CPUs.
 
-Em 13/03/2019 foi confirmada bolsa de IC para uma aluna que irá trabalhar 
-no projeto.
+%Em 13/03/2019 foi confirmada bolsa de IC para uma aluna que irá trabalhar 
+%no projeto.
 
 O manual do OpenCV de 2003 tem explicações em como fazer o pré-processamento 
-de remoção de \textit{background} de imagens. 
+de remoção de \textit{background} de imagens.
 
 \texttt{buril-lx:\textasciitilde vitors/pdf/PIV/opencv.pdf}\\
 
 \textbf{Importante:}
 
-O algoritmo do prana faz uso extensivo de operações de convolução. Para ganhar em desempenho, nossas operações de convolução PODERÃO serão feitas em 2 passos, com 2 filtros unidimensionais, caso o filtro de convolução a ser utilizado seja possível de ser decomposto em duas dimensões. Caso afirmativo, essa implementação já é um passo inicial numa eventual paralelização desta etapa do algoritmo.\\
+%O algoritmo do prana faz uso extensivo de operações de convolução. Para ganhar em desempenho, nossas operações de convolução PODERÃO serão feitas em 2 passos, com 2 filtros unidimensionais, caso o filtro de convolução a ser utilizado seja possível de ser decomposto em duas dimensões. Caso afirmativo, essa implementação já é um passo inicial numa eventual paralelização desta etapa do algoritmo.\\
+
+O algorimo implementado em OpenCL é automaticamente utilizável em CPU e GPU. Sendo assim, detalhes de implementação
+são relativos ao uso do OpenCL.
 
 \textbf{\textit{Outcomes}}
 
 \begin{itemize}
-	\item[1] Paper na revista FOSS caso o software alcance maturidade para tal. Caso contrário, publicação no INAC 2019.
+	\item[1] Paper na revista FOSS caso o software alcance maturidade para tal. Caso contrário, publicação no INAC 2023.
 	\item[2] Paper em revista com análise dos resultados do André na TAMU.
 
 \end{itemize}
